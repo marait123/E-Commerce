@@ -18,16 +18,19 @@ from django.urls import path, include
 from django.conf import settings
 from . import views
 from django.conf.urls.static import static
+from django.views.generic import TemplateView # <--
 
 urlpatterns = [
+     path('', TemplateView.as_view(template_name='social_app/index.html')), 
     path('admin/', admin.site.urls),
     path('products/', include('products.urls'), name='products'),
-    path('',views.home,name='home'),
+    # path('',views.home,name='home'),
     path('home/',views.home,name='home'),
     path('contact/',views.contact,name='contact'),
     path('register',views.register,name='register'),
     path('login',views.login,name='login'),
     path('signup',views.signup,name='signup'),
     path('logout',views.logoutUser,name='logout'),
+    path('accounts/', include('allauth.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

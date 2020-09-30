@@ -12,7 +12,7 @@ products
         <input type="submit" value="logout">
     </form>
     {% else %}
-    
+
     <a href="/signup"></a>
     <form method="POST" class="pt-2 pb-2 mx-auto col-md-8" action="/login">
         {% csrf_token %}
