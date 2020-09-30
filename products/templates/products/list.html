@@ -5,10 +5,60 @@
 products
 {% endblock %}
 {% block content %}
-<h1>product</h1>
-<ul>
-    {% for obj in objects %}
-    <li>{{obj.title}}</li>
-    {% endfor %}
-</ul>
+    <section class="page-section clearfix">
+        <h1>product</h1>
+        <div class="row">
+            {% for obj in objects %}        
+                <div class="col-sm-6 mb-3 col-lg-4">
+                <div class="card">
+                    <a data-toggle="modal" data-target="#obj{{obj.id}}"><img class="card-img-top" src="{{obj.image.url}}" alt="Card image cap"></a>
+                    <div class="card-body">            
+                    <h5 class="card-title"><a href="{{obj.get_absolute_url}}">{{obj.title}}</a></h5>
+                    <p class="card-text">{{ obj.summary }}</p>
+                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                    </div>
+                </div>
+                </div>  
+            {%endfor%}        
+        </div>
+        
+            {% for obj in objects %}        
+            
+    <!-- Modal -->
+                <div class="modal fade" id="obj{{obj.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{obj.title}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{ obj.image.url }}" class="img-fluid mx-auto d-block" alt="{{obj.title}} image">
+                            <hr/>
+                            <p>{{obj.description}}</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Buy</button>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+            {%endfor%}   
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+                </ul>
+            </nav>
+        </section>     
 {% endblock %}

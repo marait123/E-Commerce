@@ -18,6 +18,8 @@ def login(request):
     context = {
         'form': form
     }
+    if request.method.lower() == "get":
+        return render(request, 'auth/signin.html',context=context) 
     if form.is_valid():
         data = form.cleaned_data
         user = authenticate(request, **data)

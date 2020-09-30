@@ -1,25 +1,26 @@
 from django import forms
 from django.contrib.auth.models import User
+formControlClass = "form-control mb-3 d-block"
 class ContactForm(forms.Form):
-    first_name = forms.CharField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'first name'}))
-    email = forms.EmailField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'email'}))
-    content = forms.CharField(label='',widget=forms.Textarea(attrs={'class':'form-control','placeholder':'content'}))
+    first_name = forms.CharField(label='',widget=forms.TextInput(attrs={'class':formControlClass,'placeholder':'first name'}))
+    email = forms.EmailField(label='',widget=forms.TextInput(attrs={'class':formControlClass,'placeholder':'email'}))
+    content = forms.CharField(label='',widget=forms.Textarea(attrs={'class':formControlClass,'placeholder':'content'}))
 
 class LoginForm(forms.Form):
 
-    username = forms.CharField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'username'}))
-    password = forms.CharField(label='',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'password'}))
+    username = forms.CharField(label='',widget=forms.TextInput(attrs={'class':formControlClass,'placeholder':'username'}))
+    password = forms.CharField(label='',widget=forms.PasswordInput(attrs={'class':formControlClass,'placeholder':'password'}))
 
 
 class RegisterForm(forms.Form):
 
-    username = forms.CharField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'username'}))
-    first_name = forms.CharField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'first name'}))
-    last_name = forms.CharField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'last name'}), required=False)
-    email = forms.CharField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'email'}), required=False)
+    username = forms.CharField(label='',widget=forms.TextInput(attrs={'class':formControlClass,'placeholder':'username'}))
+    first_name = forms.CharField(label='',widget=forms.TextInput(attrs={'class':formControlClass,'placeholder':'first name'}))
+    last_name = forms.CharField(label='',widget=forms.TextInput(attrs={'class':formControlClass,'placeholder':'last name'}), required=False)
+    email = forms.CharField(label='',widget=forms.TextInput(attrs={'class':formControlClass,'placeholder':'email'}), required=False)
     
-    password = forms.CharField(label='',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'password'}))
-    password2 = forms.CharField(label='',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'confirm password'}))
+    password = forms.CharField(label='',widget=forms.PasswordInput(attrs={'class':formControlClass,'placeholder':'password'}))
+    password2 = forms.CharField(label='',widget=forms.PasswordInput(attrs={'class':formControlClass,'placeholder':'confirm password'}))
     def clean_username(self):
         username = self.cleaned_data.get('username')
         users = User.objects.filter(username=username)

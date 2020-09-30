@@ -4,10 +4,10 @@
 
 {% block content %}
 
- <form method = "POST" action="/signup">
+ <form method = "POST" class="pt-2 pb-2 mx-auto col-md-8" action="/signup">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="register">
+    <input type="submit" class="btn btn-primary"  value="register">
  </form>
 
-{% endblock %}
+{% endblock %} 
