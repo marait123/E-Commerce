@@ -21,10 +21,10 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView # <--
 
 urlpatterns = [
-     path('', TemplateView.as_view(template_name='social_app/index.html')), 
+    # path('', TemplateView.as_view(template_name='social_app/index.html')), 
     path('admin/', admin.site.urls),
     path('products/', include('products.urls'), name='products'),
-    # path('',views.home,name='home'),
+    path('',views.home,name='home'),
     path('home/',views.home,name='home'),
     path('contact/',views.contact,name='contact'),
     path('register',views.register,name='register'),

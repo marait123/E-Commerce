@@ -1,23 +1,18 @@
 
 {% extends "base.html" %}
+{% load socialaccount %}
 
 {% block title %}
 products
 {% endblock %}
 {% block content %}
-    {% if request.user.is_authenticated %}
-    <p>you 're logged in </p>
-    <form method="POST" action="/logout">
-        {% csrf_token %}
-        <input type="submit" value="logout">
-    </form>
-    {% else %}
-
+    {%  if request.user.is_authenticated is False %}
     <a href="/signup"></a>
     <form method="POST" class="pt-2 pb-2 mx-auto col-md-8" action="/login">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="Login"/>
+        <input class="btn btn-primary" type="submit" value="Login"/>
+        <a class='btn btn-danger' href="{% provider_login_url 'google' %}">Login with Google <span class="fa fa-google"></span></a>
     </form>
     {%endif%}
     {% if error %}
