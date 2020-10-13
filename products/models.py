@@ -31,7 +31,9 @@ class Product(models.Model):
     objects = ProductManager()
     featured = models.BooleanField(default=False)
     active = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
     def __str__(self):
+        
         return f"<Product-title:{self.title},description:{self.description}>"
     def summary(self):
         return self.description[:100]
